@@ -1,0 +1,22 @@
+{
+  "name": "hangman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arlandshane/Hangman.git"
+  },
+  "author": "Shane Arland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arlandshane/Hangman/issues"
+  },
+  "homepage": "https://github.com/arlandshane/Hangman#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
