@@ -16,7 +16,17 @@
     <nav id="navbar">
         <h1>HANGMAN</h1>
     </nav>
-    <section class="box">
+
+    <section class="box level">
+        <h3>Choose Difficulty:</h3>
+        <div class="flex">
+            <button id="easy">Easy</button>
+            <button id="medium">Medium</button>
+            <button id="hard">Hard</button>
+        </div>
+    </section>
+
+    <section class="box game">
         <svg width="200" height="200" viewBox="0 0 435 471" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect id="pole" x="345" width="30" height="441" fill="black" />
             <rect id="support" x="106" width="239" height="30" fill="black" />
@@ -40,7 +50,7 @@
             <p style="margin-right: .5rem">ANSWER:</p>
             <p class="word" id="word"></p>
         </span>
-        <div>
+        <div class="buttons">
             <button id="button-a">A</button>
             <button id="button-b">B</button>
             <button id="button-c">C</button>

@@ -27,190 +27,196 @@ const buttons = [
     '#button-z'
 ];
 
-const words = [
+const easyWords = [
     "APPLE",
     "BANANA",
     "ORANGE",
-    "PEACH",
-    "GRAPE",
-    "WATERMELON",
-    "MANGO",
-    "KIWI",
-    "SLOTH",
-    "PLUM",
-    "PINEAPPLE",
-    "LEMON",
-    "LIME",
-    "CHERRY",
-    "BLUEBERRY",
-    "STRAWBERRY",
-    "RASPBERRY",
-    "BLACKBERRY",
-    "APRICOT",
-    "AVOCADO",
-    "DOLPHIN",
-    "COCONUT",
-    "JUPITER",
     "GUAVA",
-    "POPCORN",
     "PAPAYA",
-    "POMEGRANATE",
-    "TANGERINE",
-    "DATE",
-    "DRAGONFRUIT",
     "BIRYANI",
     "SHAWARMA",
-    "ROBBERY",
     "INSTAGRAM",
-    "KEYBOARD",
-    "CRANBERRY",
-    "PASSIONFRUIT",
     "TIGER",
-    "BRIDGE",
-    "BROCCOLI",
     "CARROT",
-    "INCEPTION",
     "PETROL",
     "CUCUMBER",
     "GARLIC",
-    "LETTUCE",
-    "MUSHROOM",
-    "ONION",
     "PEPPER",
     "POTATO",
-    "PUMPKIN",
-    "RADISH",
+    "MANGO",
     "SPINACH",
-    "SWEET POTATO",
     "TOMATO",
-    "PICTURE",
+    "SLOTH",
+    "COCONUT",
     "GALLERY",
+    "CHOCOLATE",
     "CHICKEN",
-    "FISH",
-    "SAUSAGE",
-    "SHRIMP",
-    "TURKEY",
-    "COFFEE",
-    "CHEESE",
-    "MILK",
+];
+
+const mediumWords = [
+    "JUPITER",
     "BUTTER",
     "YOGURT",
-    "CREAM",
-    "MAYONNAISE",
+    "KEYBOARD",
     "MUSTARD",
+    "INCEPTION",
+    "COMPUTER",
+    "BRIDGE",
+    "UNIVERSE",
     "KETCHUP",
     "RELISH",
-    "VINEGAR",
-    "SALT",
+    "PICTURE",
     "PEPPER",
     "SUGAR",
-    "FLOUR",
-    "YEAST",
     "CINNAMON",
-    "GINGER",
-    "VANILLA",
-    "CHOCOLATE",
-    "WINE",
-    "BEER",
     "VODKA",
     "WHISKEY",
-    "BRANDY",
-    "WATER",
-    "MILKSHAKE",
-    "COCKTAIL",
-    "SOUP",
-    "CHILI",
-    "SPAGHETTI",
-    "LASAGNA",
-    "PIZZA",
-    "TACO",
-    "BURRITO",
-    "SUSHI",
-    "RICE",
-    "NOODLES",
-    "BREAD",
-    "CROISSANT",
-    "PANCAKE",
-]
+    "BRANDY"
+];
 
-const answer = words[Math.floor(Math.random() * words.length)]
-let blanks = ''
-for (let iteration = 0; iteration < answer.length; iteration++) {
-    blanks = blanks + '_'
-}
+const hardWords = [
+    "DOLPHIN",
+    "MAYONNAISE",
+    "VINEGAR",
+    "CRANBERRY",
+    "PASSIONFRUIT",
+    "BROCCOLI",
+    "HEADPHONES",
+    "TELEVISION",
+    "WATERMELON",
+    "PINEAPPLE",
+    "STRAWBERRY",
+    "POMEGRANATE",
+    "TANGERINE",
+    "DRAGONFRUIT",
+    "AVOCADO",
+    "PSYCHOLOGY",
+    "QUANTUM",
+    "CHEMISTRY",
+    "ZOOLOGY"
+];
 
-document.getElementById('guess').textContent = blanks + '(' + answer.length + ' letters)'
-document.getElementById('word').textContent = answer
+const easy = document.getElementById('easy');
+const medium = document.getElementById('medium');
+const hard = document.getElementById('hard');
+var match = 0;
+var wrong = 0;
+var hit = 0;
+var misses = 0;
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const word = document.getElementById('word').innerText;
-    const replace = document.getElementById('guess')
-    let match = 0
-    let wrong = 0
-    let hit = 0
-    let misses = 0
+    var answer
+    var blanks
 
-    //Add a click event listener to each button
-    buttons.forEach(function (buttonSelector) {
-        const button = document.querySelector(buttonSelector);
-        button.addEventListener('click', function () {
-            this.style.display = 'none';
-            for (let iteration = 0; iteration < word.length; iteration++) {
-                if (this.innerText === word.charAt(iteration)) {
-                    hit++;
-                    let letter = word.charAt(iteration)
-                    replace.innerText = replace.innerText.substring(0, iteration) + letter + replace.innerText.substring(iteration + 1, word.length);
-                }
-                else misses++;
-            }
-            if (hit > 0) {
-                match = match + hit;
-                console.log(match);
-            }
-            if (misses > word.length - 1) {
-                wrong++;
-            }
-            switch (wrong) {
-                case 1:
-                    document.getElementById('pole').style.display = 'inline';
-                    break;
-                case 2:
-                    document.getElementById('support').style.display = 'inline';
-                    break;
-                case 3:
-                    document.getElementById('harness').style.display = 'inline';
-                    break;
-                case 4:
-                    document.getElementById('head').style.display = 'inline';
-                    break;
-                case 5:
-                    document.getElementById('torso').style.display = 'inline';
-                    break;
-                case 6:
-                    document.getElementById('left-hand').style.display = 'inline';
-                    break;
-                case 7:
-                    document.getElementById('right-hand').style.display = 'inline';
-                    break;
-                case 8:
-                    document.getElementById('left-leg').style.display = 'inline';
-                    break;
-                case 9:
-                    document.getElementById('right-leg').style.display = 'inline';
-                    break;
-                default:
-                    console.error();
-                    break;
-            }
-            hit = 0; misses = 0;
-            if (match > word.length - 1) {
-                alert('you won')
-                document.getElementById('word').style.display = 'inline';
-            } else if (wrong >= 9) {
-                alert('you lost')
-                document.getElementById('word').style.display = 'inline';
-            }
-        });
+    easy.addEventListener('click', () => {
+        answer = easyWords[Math.floor(Math.random() * easyWords.length)];
+        // console.log(answer);
+        blanks = '';
+        for (let iteration = 0; iteration < answer.length; iteration++) {
+            blanks = blanks + '_';
+        }
+        document.querySelector('.game').style.display = 'block';
+        document.querySelector('.level').style.display = 'none';
+
+        buttonClicks()
     });
+
+    medium.addEventListener('click', () => {
+        answer = mediumWords[Math.floor(Math.random() * mediumWords.length)];
+        // console.log(answer);
+        blanks = '';
+        for (let iteration = 0; iteration < answer.length; iteration++) {
+            blanks = blanks + '_';
+        }
+        document.querySelector('.game').style.display = 'block';
+        document.querySelector('.level').style.display = 'none';
+        buttonClicks()
+    });
+
+    hard.addEventListener('click', () => {
+        answer = hardWords[Math.floor(Math.random() * hardWords.length)];
+        // console.log(answer);
+        blanks = '';
+        for (let iteration = 0; iteration < answer.length; iteration++) {
+            blanks = blanks + '_';
+        }
+        document.querySelector('.game').style.display = 'block';
+        document.querySelector('.level').style.display = 'none';
+        buttonClicks()
+    });
+
+    function buttonClicks() {
+        document.getElementById('guess').textContent = blanks + '(' + answer.length + ' letters)';
+        document.getElementById('word').textContent = answer;
+
+        const word = document.getElementById('word').innerText;
+        const replace = document.getElementById('guess');
+        match = 0;
+        wrong = 0;
+        hit = 0;
+        misses = 0;
+
+        buttons.forEach(function (buttonSelector) {
+            const button = document.querySelector(buttonSelector);
+            button.addEventListener('click', function () {
+                this.style.display = 'none';
+                for (let iteration = 0; iteration < word.length; iteration++) {
+                    if (this.innerText === word.charAt(iteration)) {
+                        hit++;
+                        let letter = word.charAt(iteration)
+                        replace.innerText = replace.innerText.substring(0, iteration) + letter + replace.innerText.substring(iteration + 1, word.length);
+                    }
+                    else misses++;
+                }
+                if (hit > 0) {
+                    match = match + hit;
+                    console.log(match);
+                }
+                if (misses > word.length - 1) {
+                    wrong++;;
+                }
+                switch (wrong) {
+                    case 1:
+                        document.getElementById('pole').style.display = 'inline';
+                        break;
+                    case 2:
+                        document.getElementById('support').style.display = 'inline';
+                        break;
+                    case 3:
+                        document.getElementById('harness').style.display = 'inline';
+                        break;
+                    case 4:
+                        document.getElementById('head').style.display = 'inline';
+                        break;
+                    case 5:
+                        document.getElementById('torso').style.display = 'inline';
+                        break;
+                    case 6:
+                        document.getElementById('left-hand').style.display = 'inline';
+                        break;
+                    case 7:
+                        document.getElementById('right-hand').style.display = 'inline';
+                        break;
+                    case 8:
+                        document.getElementById('left-leg').style.display = 'inline';
+                        break;
+                    case 9:
+                        document.getElementById('right-leg').style.display = 'inline';
+                        break;
+                    default:
+                        console.error();
+                        break;
+                }
+                hit = 0; misses = 0;
+                if (match > word.length - 1) {
+                    alert('you won');
+                    document.getElementById('word').style.display = 'inline';
+                } else if (wrong >= 9) {
+                    alert('you lost');
+                    document.getElementById('word').style.display = 'inline';
+                }
+            });
+        });
+    }
 })

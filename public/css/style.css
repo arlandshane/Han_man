@@ -1,0 +1,58 @@
+body {
+    background-color: lavender;
+}
+
+nav {
+    padding: 1rem;
+    margin: .5rem;
+    text-align: center;
+}
+
+#pole,
+#support,
+#harness,
+#head,
+#torso,
+#left-leg,
+#right-leg,
+#right-hand,
+#left-hand {
+    display: none;
+}
+
+#guess {
+    letter-spacing: .5rem;
+}
+
+#word {
+    display: none;
+}
+
+h1,
+h3 {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-around;
+    width: 30rem;
+    margin: .5rem auto 0 auto;
+}
+
+.box {
+    text-align: center;
+    margin: .5rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+}
+
+.buttons>button {
+    margin: 0 .5rem;
+}
+
+.game {
+    display: none;
+}
