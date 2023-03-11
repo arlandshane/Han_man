@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="game.js" defer></script>
+</head>
+
+<body>
+    <nav id="navbar">
+        <h1>HANGMAN</h1>
+    </nav>
+    <section class="box">
+        <svg width="200" height="200" viewBox="0 0 435 471" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect id="pole" x="345" width="30" height="441" fill="black" />
+            <rect id="support" x="106" width="239" height="30" fill="black" />
+            <rect id="harness" x="106" y="30" width="30" height="75" fill="black" />
+            <circle id="head" cx="121.5" cy="149.5" r="37.5" fill="black" />
+            <rect id="torso" x="106" y="194" width="30" height="150" fill="black" />
+            <rect id="stand" x="285" y="441" width="150" height="30" fill="black" />
+            <rect id="left-leg" y="429.066" width="150" height="30" transform="rotate(-45 0 429.066)" fill="black" />
+            <rect id="right-leg" x="127.213" y="323" width="150" height="30" transform="rotate(45 127.213 323)"
+                fill="black" />
+            <rect id="right-hand" x="125.284" y="194" width="150" height="30" transform="rotate(40 125.284 194)"
+                fill="black" />
+            <rect id="left-hand" x="2" y="290.418" width="150" height="30" transform="rotate(-40 2 290.418)"
+                fill="black" />
+        </svg>
+        <span style="display: flex;">
+            <p style="margin-right: .5rem;">WORD:</p>
+            <p class="word" id="guess"></p>
+        </span>
+        <span style="display: flex;">
+            <p style="margin-right: .5rem">ANSWER:</p>
+            <p class="word" id="word"></p>
+        </span>
+        <div>
+            <button id="button-a">A</button>
+            <button id="button-b">B</button>
+            <button id="button-c">C</button>
+            <button id="button-d">D</button>
+            <button id="button-e">E</button>
+            <button id="button-f">F</button>
+            <button id="button-g">G</button>
+            <button id="button-h">H</button>
+            <button id="button-i">I</button>
+            <button id="button-j">J</button>
+            <button id="button-k">K</button>
+            <button id="button-l">L</button>
+            <button id="button-m">M</button>
+            <button id="button-n">N</button>
+            <button id="button-o">O</button>
+            <button id="button-p">P</button>
+            <button id="button-q">Q</button>
+            <button id="button-r">R</button>
+            <button id="button-s">S</button>
+            <button id="button-t">T</button>
+            <button id="button-u">U</button>
+            <button id="button-v">V</button>
+            <button id="button-w">W</button>
+            <button id="button-x">X</button>
+            <button id="button-y">Y</button>
+            <button id="button-z">Z</button>
+        </div>
+    </section>
+</body>
+
+</html>
